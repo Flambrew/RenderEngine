@@ -17,7 +17,7 @@ public class Matrix4 {
         }
     }
 
-    private class Vector4 {
+    public class Vector4 {
         public double a, b, c, d;
 
         public Vector4(double[] vector) {
