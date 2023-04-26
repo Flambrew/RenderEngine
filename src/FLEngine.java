@@ -45,7 +45,7 @@ public abstract class FLEngine extends Canvas implements Runnable {
             previousTime = System.currentTimeMillis();
             frame++;
 
-            update(g);
+            update();
             repaint();
         }
     }
@@ -62,5 +62,5 @@ public abstract class FLEngine extends Canvas implements Runnable {
 
     public abstract void start();
 
-    public abstract void update(Graphics g);
+    public abstract void update();
 }
