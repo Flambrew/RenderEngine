@@ -1,7 +1,9 @@
-package src.data;
+package src.rendering;
 
 import java.util.Arrays;
 import java.util.Comparator;
+
+import src.data.Vector3;
 
 public class Mesh {
 	private Triangle[] triangles;

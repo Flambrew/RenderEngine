@@ -1,4 +1,6 @@
-package src.data;
+package src.rendering;
+
+import src.data.Vector3;
 
 public class Triangle {
 	public Vector3 a, b, c;
