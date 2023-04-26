@@ -6,7 +6,7 @@ import java.awt.Dimension;
  * Represents a 4x4 matrix
  */
 public class Matrix4 {
-    Vector4 a, b, c, d;
+    public Vector4 a, b, c, d;
 
     public Matrix4(double[][] matrix) {
         if (matrix.length == 4) {
