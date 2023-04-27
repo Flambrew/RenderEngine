@@ -34,7 +34,7 @@ public class Triangle {
 				(int) ((projection.b.y + 1) * camera.windowSize().height / 2),
 				(int) ((projection.c.y + 1) * camera.windowSize().height / 2) };
 
-        boolean fill = true;
+        boolean fill = false;
         if (fill)
             g.fillPolygon(xCoordinates, yCoordinates, 3);
         else

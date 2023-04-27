@@ -18,6 +18,6 @@ public class SampleClient extends FLEngine {
     }
 
     public static void main(String[] args) {
-        TestClient client = new TestClient(new Dimension(1280, 720), 50);
+        SampleClient client = new SampleClient(new Dimension(1280, 720), 50);
     }
 }
