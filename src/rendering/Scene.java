@@ -1,18 +1,18 @@
 package src.rendering;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import src.FLEngine;
 import src.data.Angle;
 import src.data.Matrix4;
 
 public class Scene {
 	private ArrayList<Mesh> meshes;
-	private Camera camera;
+	private FLEngine engine;
 
-	public Scene(Camera camera) {
-		this.camera = camera;
+	public Scene(FLEngine engine) {
+		this.engine = engine;
 		this.meshes = new ArrayList<Mesh>();
 	}
 
@@ -25,10 +25,10 @@ public class Scene {
 		for (Mesh mesh : meshes) 
 			triangles.addAll(mesh.triangles());
 		Mesh sceneMesh = new Mesh(triangles);
-		sceneMesh.orderByDistanceFrom(camera.transform());
+		sceneMesh.orderByDistanceFrom(engine.camera().transform());
 
-		Matrix4 projectionMatrix = Matrix4.PROJECTION_MATRIX(new Dimension(1600, 900), new Angle(90, false), 1000, .1);
+		Matrix4 projectionMatrix = Matrix4.PROJECTION_MATRIX(engine.windowSize(), new Angle(90, false), 1000, .1);
 
-		sceneMesh.paint(g, camera, projectionMatrix);
+		sceneMesh.paint(g, engine.camera(), projectionMatrix);
 	}
 }
