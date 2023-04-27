@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import src.data.Matrix4;
 import src.data.Vector3;
 
 public class Mesh {
 	private ArrayList<Triangle> triangles;
 
 	public Mesh(Triangle[] triangles) {
-		this.triangles = (ArrayList<Triangle>) Arrays.asList(triangles);
+		this.triangles = new ArrayList<Triangle>(Arrays.asList(triangles));
 	}
 
 	public Mesh(ArrayList<Triangle> triangles) {
@@ -34,9 +35,9 @@ public class Mesh {
 		return triangles;
 	}
 
-	public void paint(Graphics g) {
+	public void paint(Graphics g, Camera camera, Matrix4 projectionMatrix) {
 		for (Triangle triangle : triangles) 
-			triangle.paint(g);
+			triangle.paint(g, camera, projectionMatrix);
 	}
 
 	public static final Mesh CUBE = new Mesh(new Triangle[] {
