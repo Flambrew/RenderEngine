@@ -13,7 +13,6 @@ public abstract class FLEngine extends Canvas implements Runnable {
 
     private Thread renderThread;
     private JFrame window;
-    private Graphics g;
 
     private Dimension windowSize;
     public Scene currentScene;
@@ -35,11 +34,10 @@ public abstract class FLEngine extends Canvas implements Runnable {
         window.setSize(windowSize.width, windowSize.height);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
-
-        start();
         
         renderThread = new Thread(this);
         renderThread.start();
+        start();
     }
 
     @Override
@@ -59,11 +57,7 @@ public abstract class FLEngine extends Canvas implements Runnable {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        this.g = g;
-
         currentScene.paint(g);
-        System.out.println("paint");
-        g.drawRect(100, 100, 100, 100);
     }
 
     public double deltaTime() {
