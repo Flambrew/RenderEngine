@@ -1,5 +1,6 @@
 package src.rendering;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class Scene {
@@ -12,5 +13,14 @@ public class Scene {
 
 	public void addMesh(Mesh mesh) {
 		meshes.add(mesh);
+	}
+
+	public void paint(Graphics g) {
+		ArrayList<Triangle> triangles = new ArrayList<Triangle>();
+		for (Mesh mesh : meshes) 
+			triangles.addAll(mesh.triangles());
+		Mesh sceneMesh = new Mesh(triangles);
+		sceneMesh.orderByDistanceFrom(camera.transform());
+		sceneMesh.paint(g);
 	}
 }

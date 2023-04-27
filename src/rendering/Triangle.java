@@ -1,5 +1,7 @@
 package src.rendering;
 
+import java.awt.Graphics;
+
 import src.data.Vector3;
 
 public class Triangle {
@@ -9,5 +11,9 @@ public class Triangle {
 		this.a = a;
 		this.b = b;
 		this.c = c;
+	}
+
+	public void paint(Graphics g) {
+		
 	}
 }

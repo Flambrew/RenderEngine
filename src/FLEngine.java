@@ -7,11 +7,13 @@ import java.awt.Graphics;
 
 import javax.swing.JFrame;
 
+import src.rendering.Scene;
+
 public abstract class FLEngine extends Canvas implements Runnable {
 
     private Thread renderThread;
     private JFrame window;
-    public Graphics g;
+    public Scene currentScene;
 
     // Timekeeping
     private int frameRate;
@@ -53,11 +55,15 @@ public abstract class FLEngine extends Canvas implements Runnable {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        this.g = g;
+        currentScene.paint(g);
     }
 
     public double deltaTime() {
         return deltaTime;
+    }
+
+    public void setScene(Scene scene) {
+        this.currentScene = scene;
     }
 
     public abstract void start();
