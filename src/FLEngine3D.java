@@ -1,6 +1,5 @@
 package src;
 
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -30,9 +29,9 @@ public abstract class FLEngine3D extends JPanel {
 
         window = new JFrame();
         window.getContentPane().add(this);
-        window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(windowSize.width, windowSize.height);
+        window.setLocationRelativeTo(null);
         window.setVisible(true);
         setBackground(Color.BLACK);
 
