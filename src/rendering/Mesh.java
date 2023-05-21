@@ -3,7 +3,6 @@ package src.rendering;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 import src.FLEngine3D;
 import src.data.Matrix4;
