@@ -29,22 +29,22 @@ public class Mesh {
 	}
 
 	public static final Mesh CUBE = new Mesh(new Triangle[] {
-			new Triangle(new Vector3(1, 1, 0), new Vector3(1, 1, 0), new Vector3(1, 0, 1)), // x
-			new Triangle(new Vector3(1, 0, 1), new Vector3(1, 0, 0), new Vector3(1, 1, 0)),
+			new Triangle(new Vector3(0.5, 0.5, -0.5), new Vector3(0.5, 0.5, -0.5), new Vector3(0.5, -0.5, 0.5)), // x
+			new Triangle(new Vector3(0.5, -0.5, 0.5), new Vector3(0.5, -0.5, -0.5), new Vector3(0.5, 0.5, -0.5)),
 
-			new Triangle(new Vector3(0, 1, 1), new Vector3(0, 1, 0), new Vector3(0, 0, 0)), // -x
-			new Triangle(new Vector3(0, 0, 0), new Vector3(0, 0, 1), new Vector3(0, 1, 1)),
+			new Triangle(new Vector3(-0.5, 0.5, 0.5), new Vector3(-0.5, 0.5, -0.5), new Vector3(-0.5, -0.5, -0.5)), // -x
+			new Triangle(new Vector3(-0.5, -0.5, -0.5), new Vector3(-0.5, -0.5, 0.5), new Vector3(-0.5, 0.5, 0.5)),
 
-			new Triangle(new Vector3(1, 1, 0), new Vector3(0, 1, 0), new Vector3(0, 1, 1)), // y
-			new Triangle(new Vector3(0, 1, 1), new Vector3(1, 1, 1), new Vector3(1, 1, 0)),
+			new Triangle(new Vector3(0.5, 0.5, -0.5), new Vector3(-0.5, 0.5, -0.5), new Vector3(-0.5, 0.5, 0.5)), // y
+			new Triangle(new Vector3(-0.5, 0.5, 0.5), new Vector3(0.5, 0.5, 0.5), new Vector3(0.5, 0.5, -0.5)),
 
-			new Triangle(new Vector3(0, 0, 0), new Vector3(1, 0, 0), new Vector3(1, 0, 1)), // -y
-			new Triangle(new Vector3(1, 0, 1), new Vector3(0, 0, 1), new Vector3(0, 0, 0)),
+			new Triangle(new Vector3(-0.5, -0.5, -0.5), new Vector3(0.5, -0.5, -0.5), new Vector3(0.5, -0.5, 0.5)), // -y
+			new Triangle(new Vector3(0.5, -0.5, 0.5), new Vector3(-0.5, -0.5, 0.5), new Vector3(-0.5, -0.5, -0.5)),
 
-			new Triangle(new Vector3(0, 1, 1), new Vector3(0, 0, 1), new Vector3(1, 0, 1)), // z
-			new Triangle(new Vector3(1, 0, 1), new Vector3(1, 1, 1), new Vector3(0, 1, 1)),
+			new Triangle(new Vector3(-0.5, 0.5, 0.5), new Vector3(-0.5, -0.5, 0.5), new Vector3(0.5, -0.5, 0.5)), // z
+			new Triangle(new Vector3(0.5, -0.5, 0.5), new Vector3(0.5, 0.5, 0.5), new Vector3(-0.5, 0.5, 0.5)),
 
-			new Triangle(new Vector3(0, 0, 0), new Vector3(0, 1, 0), new Vector3(1, 1, 0)), // -z
-			new Triangle(new Vector3(1, 1, 0), new Vector3(1, 0, 0), new Vector3(0, 0, 0))
+			new Triangle(new Vector3(-0.5, -0.5, -0.5), new Vector3(-0.5, 0.5, -0.5), new Vector3(0.5, 0.5, -0.5)), // -z
+			new Triangle(new Vector3(0.5, 0.5, -0.5), new Vector3(0.5, -0.5, -0.5), new Vector3(-0.5, -0.5, -0.5))
 	});
 }
