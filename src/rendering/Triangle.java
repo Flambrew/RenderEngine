@@ -21,7 +21,7 @@ public class Triangle {
 		Camera camera = engine.camera();
 
 		Matrix4 matRotZ, matRotX;
-		double fTheta = (engine.startTime() - System.currentTimeMillis()) / 1000.; 
+		double fTheta = engine.timeElapsed(); 
 
 		matRotZ = new Matrix4(
 			new double[][] {

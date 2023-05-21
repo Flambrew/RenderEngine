@@ -4,29 +4,27 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import src.data.Vector3;
 import src.rendering.Camera;
 import src.rendering.Scene;
 
-public abstract class FLEngine3D extends Canvas implements Runnable {
-    // initialize engine thread and window
-    private Thread renderThread;
+public abstract class FLEngine3D extends JPanel {
     private JFrame window;
-
-    // initialize simulation and window dimensions, scene and camera
     private Dimension windowSize;
     private Scene currentScene;
     private Camera camera;
+    private Timer frameTimer;
 
-    // initialize frame time variables
-    private int frameRate;
-    private long startTime, previousTime, deltaTime, frame;
+    private long startTime;
 
     public FLEngine3D(final Dimension windowSize, final int framerate) {
-        this.frameRate = framerate;
         this.windowSize = windowSize;
         this.camera = new Camera(windowSize, new Vector3(1, 1, 2), new Vector3());
 
@@ -38,26 +36,17 @@ public abstract class FLEngine3D extends Canvas implements Runnable {
         window.setVisible(true);
         setBackground(Color.BLACK);
 
-        startTime = System.currentTimeMillis();
-        previousTime = System.currentTimeMillis();
-
-        renderThread = new Thread(this);
-        renderThread.start();
         start();
-    }
 
-    @Override
-    public void run() {
-        while (true) {
-            do {
-                deltaTime = System.currentTimeMillis() - previousTime;
-            } while ((System.currentTimeMillis() - startTime) * frameRate / 1000 < frame);
-            previousTime = System.currentTimeMillis();
-            frame++;
-
-            repaint();
-            frameUpdate();
-        }
+        startTime = System.currentTimeMillis();
+        frameTimer = new Timer(1000 / framerate, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameUpdate();
+                repaint();
+            }
+        }); 
+        frameTimer.start();
     }
 
     @Override
@@ -66,12 +55,8 @@ public abstract class FLEngine3D extends Canvas implements Runnable {
         currentScene.paint(g);
     }
 
-    public double deltaTime() {
-        return deltaTime / 1000.;
-    }
-
-    public long startTime() {
-        return startTime;
+    public double timeElapsed() {
+        return (startTime - System.currentTimeMillis()) / 1000.;
     }
 
     public Dimension windowSize() {
