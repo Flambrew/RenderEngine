@@ -46,9 +46,7 @@ public class Triangle {
                 b.applyMatrix(matRotZ).applyMatrix(matRotX).sum(0, 0, 3).applyMatrix(projectionMatrix),
                 c.applyMatrix(matRotZ).applyMatrix(matRotX).sum(0, 0, 3).applyMatrix(projectionMatrix));
 
-        g.setColor(new Color(32 * (int) (Math.random() * 8),
-                32 * (int) (Math.random() * 8),
-                32 * (int) (Math.random() * 8)));
+        g.setColor(Color.WHITE);
 				
 		int[] xCoordinates = new int[] {
 				(int) ((projection.a.x + 1) * camera.windowSize().width / 2),

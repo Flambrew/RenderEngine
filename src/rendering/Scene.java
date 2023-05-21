@@ -25,7 +25,7 @@ public class Scene {
 		for (Mesh mesh : meshes) 
 			triangles.addAll(mesh.triangles());
 		Mesh sceneMesh = new Mesh(triangles);
-		sceneMesh.orderByDistanceFrom(engine.camera().transform());
+		// sceneMesh.orderByDistanceFrom(engine.camera().transform());
 
 		Matrix4 projectionMatrix = Matrix4.PROJECTION_MATRIX(engine.windowSize(), new Angle(90, false), 1000., .1);
 
