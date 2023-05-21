@@ -31,8 +31,11 @@ public class Matrix4 {
     }
 
     public static Matrix4 PROJECTION_MATRIX(final Dimension windowSize, final Angle fov, final double maxDistViewable, final double minDistViewable) {
-        return new Matrix4(new double[][] { { windowSize.height / (windowSize.width * Math.tan(fov.rad() / 2)), 0, 0, 0 },
-                { 0, 1 / Math.tan(fov.rad() / 2), 0, 0 }, { 0, 0, maxDistViewable / (maxDistViewable - minDistViewable), 1 },
+        return new Matrix4(
+            new double[][] {
+                { windowSize.height / (windowSize.width * Math.tan(fov.rad() / 2)), 0, 0, 0 },
+                { 0, 1 / Math.tan(fov.rad() / 2), 0, 0 }, 
+                { 0, 0, maxDistViewable / (maxDistViewable - minDistViewable), 1 },
                 { 0, 0, -maxDistViewable * minDistViewable / (maxDistViewable - minDistViewable), 0 } });
     }
 }

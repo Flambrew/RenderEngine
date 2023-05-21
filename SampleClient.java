@@ -1,8 +1,8 @@
 import java.awt.Dimension;
 
-import src.FLEngine;
+import src.FLEngine3D;
 
-public class SampleClient extends FLEngine {
+public class SampleClient extends FLEngine3D {
     public SampleClient(Dimension windowSize, int framerate) {
         super(windowSize, framerate);
     }
@@ -13,11 +13,11 @@ public class SampleClient extends FLEngine {
     }
 
     // update is called once per frame
-    public void update() {
+    public void frameUpdate() {
         
     }
 
     public static void main(String[] args) {
-        SampleClient client = new SampleClient(new Dimension(1280, 720), 50);
+        new SampleClient(new Dimension(1280, 720), 50);
     }
 }

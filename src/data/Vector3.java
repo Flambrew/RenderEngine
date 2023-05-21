@@ -20,10 +20,13 @@ public class Vector3 {
         this.z = z;
     }
     
+    public Vector3 sum(double ox, double oy, double oz) {
+        return new Vector3(x + ox, y + oy, z + oz);
+    }
+
     public Vector3 sum(Vector3 other) {
         return new Vector3(x + other.x, y + other.y, z + other.z);
     }
-
     public Vector3 scale(double n) {
         return new Vector3(x * n, y * n, z * n);
     }

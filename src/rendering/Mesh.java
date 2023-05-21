@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import src.FLEngine3D;
 import src.data.Matrix4;
 import src.data.Vector3;
 
@@ -35,9 +36,9 @@ public class Mesh {
 		return triangles;
 	}
 
-	public void paint(Graphics g, Camera camera, Matrix4 projectionMatrix) {
+	public void paint(Graphics g, FLEngine3D engine, Matrix4 projectionMatrix) {
 		for (Triangle triangle : triangles) 
-			triangle.paint(g, camera, projectionMatrix);
+			triangle.paint(g, engine, projectionMatrix);
 	}
 
 	public static final Mesh CUBE = new Mesh(new Triangle[] {

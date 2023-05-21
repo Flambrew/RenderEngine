@@ -3,15 +3,15 @@ package src.rendering;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import src.FLEngine;
+import src.FLEngine3D;
 import src.data.Angle;
 import src.data.Matrix4;
 
 public class Scene {
 	private ArrayList<Mesh> meshes;
-	private FLEngine engine;
+	private FLEngine3D engine;
 
-	public Scene(FLEngine engine) {
+	public Scene(FLEngine3D engine) {
 		this.engine = engine;
 		this.meshes = new ArrayList<Mesh>();
 	}
@@ -27,8 +27,8 @@ public class Scene {
 		Mesh sceneMesh = new Mesh(triangles);
 		sceneMesh.orderByDistanceFrom(engine.camera().transform());
 
-		Matrix4 projectionMatrix = Matrix4.PROJECTION_MATRIX(engine.windowSize(), new Angle(90, false), 1000, .1);
+		Matrix4 projectionMatrix = Matrix4.PROJECTION_MATRIX(engine.windowSize(), new Angle(90, false), 1000., .1);
 
-		sceneMesh.paint(g, engine.camera(), projectionMatrix);
+		sceneMesh.paint(g, engine, projectionMatrix);
 	}
 }
