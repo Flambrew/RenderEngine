@@ -25,7 +25,7 @@ public abstract class FLEngine3D extends JPanel {
 
     public FLEngine3D(final Dimension windowSize, final int framerate) {
         this.windowSize = windowSize;
-        this.camera = new Camera(windowSize, new Vector3(1, 1, 2), new Vector3());
+        this.camera = new Camera(windowSize, new Vector3(0, 0, 0), new Vector3());
 
         window = new JFrame();
         window.getContentPane().add(this);

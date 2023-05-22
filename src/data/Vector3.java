@@ -31,6 +31,10 @@ public class Vector3 {
         return new Vector3(x * n, y * n, z * n);
     }
 
+    public Vector3 normalize() {
+        return scale(1 / Math.sqrt(x * x + y * y + z * z));
+    }
+
     public Vector3 applyMatrix(Matrix4 matrix) {
         double W = x * matrix.a.d + y * matrix.b.d + z * matrix.c.d + matrix.d.d;
 
