@@ -37,6 +37,15 @@ public class Mesh {
 		return this;
 	}
 
+	public Mesh translate(Matrix4 translation) {
+		for (Triangle triangle : triangles) {
+			triangle.a = triangle.a.applyMatrix(translation);
+			triangle.b = triangle.b.applyMatrix(translation);
+			triangle.c = triangle.c.applyMatrix(translation);
+		}	
+		return this;
+	}
+
 	public static Mesh CUBE() {
 		return new Mesh(new Triangle[] {
 			new Triangle(new Vector3(1, 1, 0), new Vector3(1, 1, 1), new Vector3(1, 0, 1)), // x
