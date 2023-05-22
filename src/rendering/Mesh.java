@@ -28,7 +28,17 @@ public class Mesh {
 			triangle.paint(g, engine, projectionMatrix);
 	}
 
-	public static final Mesh CUBE = new Mesh(new Triangle[] {
+	public Mesh translate(Vector3 translation) {
+		for (Triangle triangle : triangles) {
+			triangle.a = triangle.a.sum(translation);
+			triangle.b = triangle.b.sum(translation);
+			triangle.c = triangle.c.sum(translation);
+		}	
+		return this;
+	}
+
+	public static Mesh CUBE() {
+		return new Mesh(new Triangle[] {
 			new Triangle(new Vector3(1, 1, 0), new Vector3(1, 1, 1), new Vector3(1, 0, 1)), // x
 			new Triangle(new Vector3(1, 0, 1), new Vector3(1, 0, 0), new Vector3(1, 1, 0)),
 
@@ -46,5 +56,6 @@ public class Mesh {
 
 			new Triangle(new Vector3(0, 0, 0), new Vector3(0, 1, 0), new Vector3(1, 1, 0)), // -z
 			new Triangle(new Vector3(1, 1, 0), new Vector3(1, 0, 0), new Vector3(0, 0, 0))
-	});
+		});
+	};
 }
