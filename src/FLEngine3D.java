@@ -22,10 +22,12 @@ public abstract class FLEngine3D extends JPanel {
     private Timer frameTimer;
 
     private long startTime;
+    private int framerate;
 
     public FLEngine3D(final Dimension windowSize, final int framerate) {
         this.windowSize = windowSize;
-        this.camera = new Camera(windowSize, new Vector3(0, 0, 0), new Vector3());
+        this.framerate = framerate;
+        this.camera = new Camera(new Vector3(0, 0, -3), new Vector3());
 
         window = new JFrame();
         window.getContentPane().add(this);
@@ -72,6 +74,10 @@ public abstract class FLEngine3D extends JPanel {
 
     public Camera camera() {
         return camera;
+    }
+
+    public int framerate() {
+        return framerate;
     }
 
     public abstract void start();
