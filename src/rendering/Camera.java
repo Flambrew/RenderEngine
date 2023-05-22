@@ -1,7 +1,5 @@
 package src.rendering;
 
-import java.awt.Dimension;
-
 import src.data.Vector3;
 
 public class Camera {
