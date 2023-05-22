@@ -20,6 +20,10 @@ public class Scene {
 		meshes.add(mesh);
 	}
 
+	public ArrayList<Mesh> getMeshes() {
+		return meshes;
+	}
+
 	public void paint(Graphics g) {
 		ArrayList<Triangle> triangles = new ArrayList<Triangle>();
 		for (Mesh mesh : meshes) 
