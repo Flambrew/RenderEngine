@@ -22,9 +22,9 @@ public class Triangle {
 		Vector3 camPos = engine.camera().transform();
 
 		Triangle translation = new Triangle(
-			a.sum(-camPos.x, -camPos.y, -camPos.z),
-			b.sum(-camPos.x, -camPos.y, -camPos.z),
-			c.sum(-camPos.x, -camPos.y, -camPos.z)
+			a.sum(camPos.scale(-1)),
+			b.sum(camPos.scale(-1)),
+			c.sum(camPos.scale(-1))
 		);
 
 		Vector3 line1 = new Vector3(translation.b.x - translation.a.x, translation.b.y - translation.a.y, translation.b.z - translation.a.z);
@@ -47,7 +47,7 @@ public class Triangle {
 					(int) ((projection.c.y + 1) * engine.windowSize().height / 2) };
 
 			Vector3 color = new Vector3(this.color.getRed(), this.color.getGreen(), this.color.getBlue());
-			color = color.scale(engine.camera().lightsource().normalize().dotProduct(normal) / 3 + 0.5);
+			color = color.scale(engine.camera().lightsource().normalize().dotProduct(normal) / 2.22 + 0.61);
 			
 			g.setColor(new Color((int)color.x, (int)color.y, (int)color.z));
 			g.fillPolygon(xCoordinates, yCoordinates, 3);
