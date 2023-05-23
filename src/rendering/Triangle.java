@@ -47,7 +47,7 @@ public class Triangle {
 					(int) ((projection.c.y + 1) * engine.windowSize().height / 2) };
 
 			Vector3 color = new Vector3(this.color.getRed(), this.color.getGreen(), this.color.getBlue());
-			color = color.scale(engine.camera().lightsource().normalize().dotProduct(normal) / 2 + 0.5);
+			color = color.scale(engine.camera().lightsource().normalize().dotProduct(normal) / 3 + 0.5);
 			
 			g.setColor(new Color((int)color.x, (int)color.y, (int)color.z));
 			g.fillPolygon(xCoordinates, yCoordinates, 3);
