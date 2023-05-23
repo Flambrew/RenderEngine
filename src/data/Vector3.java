@@ -1,7 +1,10 @@
 package src.data;
 
 /**
- * Represents a point or vector in 3D space.
+ * Represents a point or vector in 3D space
+ * 
+ * @since 26 Apr 2023
+ * @author Andrew Matherne (Flambrew) 
  */
 public class Vector3 {
     public double x, y, z;
@@ -19,31 +22,62 @@ public class Vector3 {
         this.y = y;
         this.z = z;
     }
-    
-    public Vector3 sum(double ox, double oy, double oz) {
-        return new Vector3(x + ox, y + oy, z + oz);
-    }
 
+    /**
+     * Returns a new vector of the sum of this and another vector
+     * 
+     * @param other
+     * @return sum
+     */
     public Vector3 sum(Vector3 other) {
         return new Vector3(x + other.x, y + other.y, z + other.z);
     }
 
+    /**
+     * Returns a new vector of this vector scaled by an scaling factor
+     * 
+     * @param n
+     * @return scale
+     */
     public Vector3 scale(double n) {
         return new Vector3(x * n, y * n, z * n);
     }
 
-    public double dotProduct(Vector3 other) {
-        return x * other.x + y * other.y + z * other.z;  
-    }
-
-    public Vector3 crossProduct(Vector3 other) {
-        return new Vector3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
-    }
-
+    /**
+     * Returns a new vector of the normalization of this vector
+     * 
+     * @return normalization
+     */
     public Vector3 normalize() {
         return scale(1 / Math.sqrt(x * x + y * y + z * z));
     }
 
+    /**
+     * Returns the dot product of this and another vector
+     * 
+     * @param other
+     * @return dot rpoduct
+     */
+    public double dotProduct(Vector3 other) {
+        return x * other.x + y * other.y + z * other.z;  
+    }
+
+    /**
+     * Returns a new vector of the cross product of this and another vector
+     * 
+     * @param other
+     * @return cross product
+     */
+    public Vector3 crossProduct(Vector3 other) {
+        return new Vector3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+    }
+
+    /**
+     * Returns a new vector of this vector after applying a transformation matrix
+     * 
+     * @param matrix
+     * @return translated vector
+     */
     public Vector3 applyMatrix(Matrix4 matrix) {
         double W = x * matrix.a.d + y * matrix.b.d + z * matrix.c.d + matrix.d.d;
 
