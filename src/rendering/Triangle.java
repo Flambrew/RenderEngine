@@ -30,13 +30,9 @@ public class Triangle {
 		Vector3 normal, line1, line2;
 		line1 = new Vector3(translation.b.x - translation.a.x, translation.b.y - translation.a.y, translation.b.z - translation.a.z);
 		line2 = new Vector3(translation.c.x - translation.a.x, translation.c.y - translation.a.y, translation.c.z - translation.a.z);
-		normal = new Vector3(line1.y * line2.z - line1.z * line2.y, line1.z * line2.x - line1.x * line2.z, line1.x * line2.y - line1.y * line2.x);
-		normal = normal.normalize();
+		normal = line1.crossProduct(line2).normalize();
 
-		if (normal.x * (translation.a.x/* - camPos.x*/) + 
-			normal.y * (translation.a.y/* - camPos.y*/) +
-			normal.z * (translation.a.z/* - camPos.z*/) < 0) {
-
+		if (normal.dotProduct(translation.a) < 0) {
 			Triangle projection = new Triangle(
 					translation.a.applyMatrix(projectionMatrix),
 					translation.b.applyMatrix(projectionMatrix),
@@ -51,7 +47,7 @@ public class Triangle {
 					(int) ((projection.b.y + 1) * engine.windowSize().height / 2),
 					(int) ((projection.c.y + 1) * engine.windowSize().height / 2) };
 
-			boolean fill = true;
+			boolean fill = false;
 			if (fill) {
 				g.setColor(color);
 				g.fillPolygon(xCoordinates, yCoordinates, 3);
