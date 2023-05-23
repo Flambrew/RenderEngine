@@ -53,4 +53,8 @@ public class Vector3 {
 
         return new Vector3(X, Y, Z);
     }
+
+    public String toString() {
+        return String.format("(%.3f, %.3f, %.3f)", x, y, z);
+    }
 }

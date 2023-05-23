@@ -15,7 +15,7 @@ public class Triangle {
 		this.a = a;
 		this.b = b;
 		this.c = c;
-		this.color = new Color((int) (Math.random() * 16) * 16, (int) (Math.random() * 16) * 16, (int) (Math.random() * 16) * 16);
+		this.color = Color.WHITE;
 	}
 
 	public void paint(Graphics g, FLEngine3D engine , Matrix4 projectionMatrix) {
@@ -27,10 +27,9 @@ public class Triangle {
 			c.sum(-camPos.x, -camPos.y, -camPos.z)
 		);
 
-		Vector3 normal, line1, line2;
-		line1 = new Vector3(translation.b.x - translation.a.x, translation.b.y - translation.a.y, translation.b.z - translation.a.z);
-		line2 = new Vector3(translation.c.x - translation.a.x, translation.c.y - translation.a.y, translation.c.z - translation.a.z);
-		normal = line1.crossProduct(line2).normalize();
+		Vector3 line1 = new Vector3(translation.b.x - translation.a.x, translation.b.y - translation.a.y, translation.b.z - translation.a.z);
+		Vector3 line2 = new Vector3(translation.c.x - translation.a.x, translation.c.y - translation.a.y, translation.c.z - translation.a.z);
+		Vector3 normal = line1.crossProduct(line2).normalize();
 
 		if (normal.dotProduct(translation.a) < 0) {
 			Triangle projection = new Triangle(
@@ -47,14 +46,13 @@ public class Triangle {
 					(int) ((projection.b.y + 1) * engine.windowSize().height / 2),
 					(int) ((projection.c.y + 1) * engine.windowSize().height / 2) };
 
-			boolean fill = false;
-			if (fill) {
-				g.setColor(color);
-				g.fillPolygon(xCoordinates, yCoordinates, 3);
-			} else {	
-			g.setColor(Color.WHITE);
-				g.drawPolygon(xCoordinates, yCoordinates, 3);
-			}
+			Vector3 color = new Vector3(this.color.getRed(), this.color.getGreen(), this.color.getBlue());
+			color = color.scale(engine.camera().lightsource().normalize().dotProduct(normal) / 2 + 0.5);
+			
+			g.setColor(new Color((int)color.x, (int)color.y, (int)color.z));
+			g.fillPolygon(xCoordinates, yCoordinates, 3);
+			g.setColor(Color.BLACK);
+			g.drawPolygon(xCoordinates, yCoordinates, 3);
 		}
 	}
 }
