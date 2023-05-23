@@ -37,7 +37,7 @@ public class Vector3 {
     }
 
     public Vector3 crossProduct(Vector3 other) {
-        new Vector3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
+        return new Vector3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
     }
 
     public Vector3 normalize() {
