@@ -31,11 +31,18 @@ public class Matrix4 {
     }
 
     public static Matrix4 PROJECTION_MATRIX(final Dimension windowSize, final Angle fov, final double maxDistViewable, final double minDistViewable) {
-        return new Matrix4(
-            new double[][] {
-                { windowSize.height / (windowSize.width * Math.tan(fov.rad() / 2)), 0, 0, 0 },
-                { 0, 1 / Math.tan(fov.rad() / 2), 0, 0 }, 
-                { 0, 0, maxDistViewable / (maxDistViewable - minDistViewable), 1 },
+        return new Matrix4(new double[][] { { windowSize.height / (windowSize.width * Math.tan(fov.rad() / 2)), 0, 0, 0 },
+                { 0, 1 / Math.tan(fov.rad() / 2), 0, 0 }, { 0, 0, maxDistViewable / (maxDistViewable - minDistViewable), 1 },
                 { 0, 0, -maxDistViewable * minDistViewable / (maxDistViewable - minDistViewable), 0 } });
+    }
+
+    public static Matrix4 Z_ROTATE(final double increment) {
+        return new Matrix4(new double[][] { { Math.cos(increment * .5), -Math.sin(increment * .5), 0, 0 },
+                { Math.sin(increment * .5), Math.cos(increment * .5), 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 } });
+    }
+
+    public static Matrix4 X_ROTATE(final double increment) {
+        return new Matrix4(new double[][] { { 1, 0, 0, 0 }, { 0, Math.cos(increment), -Math.sin(increment), 0 },
+                { 0, Math.sin(increment), Math.cos(increment), 0 }, { 0, 0, 0, 1 } });
     }
 }
