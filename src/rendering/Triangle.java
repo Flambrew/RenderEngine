@@ -33,9 +33,9 @@ public class Triangle {
 
 		if (normal.dotProduct(translation.a) < 0) {
 			Triangle projection = new Triangle(
-					translation.a.applyMatrix(projectionMatrix),
-					translation.b.applyMatrix(projectionMatrix),
-					translation.c.applyMatrix(projectionMatrix));
+					translation.a.transform(projectionMatrix),
+					translation.b.transform(projectionMatrix),
+					translation.c.transform(projectionMatrix));
 					
 			int[] xCoordinates = new int[] {
 					(int) ((projection.a.x + 1) * engine.windowSize().width / 2),

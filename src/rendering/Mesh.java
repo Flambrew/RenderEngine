@@ -52,9 +52,9 @@ public class Mesh {
 
 	public Mesh translate(Matrix4 translation) {
 		for (Triangle triangle : triangles) {
-			triangle.a = triangle.a.applyMatrix(translation);
-			triangle.b = triangle.b.applyMatrix(translation);
-			triangle.c = triangle.c.applyMatrix(translation);
+			triangle.a = triangle.a.transform(translation);
+			triangle.b = triangle.b.transform(translation);
+			triangle.c = triangle.c.transform(translation);
 		}	
 		return this;
 	}
