@@ -7,7 +7,7 @@ package src.data;
  * @author Andrew Matherne (Flambrew) 
  */
 public class Vector3 {
-    public double x, y, z;
+    private double x, y, z;
 
     public Vector3() {
         this(0, 0);
@@ -21,6 +21,33 @@ public class Vector3 {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    /**
+     * Getter for x
+     * 
+     * @return x
+     */
+    public double x() {
+        return x;
+    }
+
+    /**
+     * Getter for y
+     * 
+     * @return y
+     */
+    public double y() {
+        return y;
+    }
+
+    /**
+     * Getter for z
+     * 
+     * @return z
+     */
+    public double z() {
+        return z;
     }
 
     /**
