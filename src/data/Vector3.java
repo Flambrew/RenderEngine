@@ -134,7 +134,13 @@ public class Vector3 {
         return this;
     }
 
-    public static Vector3 meanVector(Vector3... points) {
+    /**
+     * Returns the centroid of a set of points
+     * 
+     * @param points
+     * @return centroid
+     */
+    public static Vector3 centroid(Vector3... points) {
         double X = 0, Y = 0, Z = 0;
         for (Vector3 vector3 : points) {
             X += vector3.x;
@@ -149,6 +155,13 @@ public class Vector3 {
         return new Vector3(X, Y, Z); 
     }
 
+    /**
+     * Returns the distance between two vectors
+     * 
+     * @param a
+     * @param b
+     * @return distance
+     */
     public static double distanceBetween(Vector3 a, Vector3 b) {
         return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2));
     }

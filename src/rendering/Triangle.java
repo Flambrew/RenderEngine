@@ -56,7 +56,9 @@ public class Triangle {
 			};
 
 			/*
-			 * old shading code Vector3 color = new Vector3(this.color.getRed(),
+			 * old shading code:
+			 * 
+			 * Vector3 color = new Vector3(this.color.getRed(),
 			 * this.color.getGreen(), this.color.getBlue()); color =
 			 * color.scale(engine.camera().lightsource().normalize().dotProduct(normal) /
 			 * 2.22 + 0.54954); g.setColor(new Color((int)color.x, (int)color.y,
