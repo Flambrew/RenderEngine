@@ -24,36 +24,51 @@ public class Vector3 {
     }
 
     /**
-     * Returns a new vector of the sum of this and another vector
+     * Returns a clone of this vector
+     * 
+     * @return clone
+     */
+    public Vector3 clone() {
+        return new Vector3(x, y, z);
+    }
+
+    /**
+     * Adds other to this
      * 
      * @param other
-     * @return sum
+     * @return this
      */
     public Vector3 sum(Vector3 other) {
-        return new Vector3(x + other.x, y + other.y, z + other.z);
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        return this;
     }
 
     /**
-     * Returns a new vector of this vector scaled by an scaling factor
+     * Scales this vector by n
      * 
      * @param n
-     * @return scale
+     * @return this
      */
     public Vector3 scale(double n) {
-        return new Vector3(x * n, y * n, z * n);
+        x *= n;
+        y *= n;
+        z *= n;
+        return this;
     }
 
     /**
-     * Returns a new vector of the normalization of this vector
+     * Normalizes this vector
      * 
-     * @return normalization
+     * @return this
      */
     public Vector3 normalize() {
         return scale(1 / Math.sqrt(x * x + y * y + z * z));
     }
 
     /**
-     * Returns the dot product of this and another vector
+     * Returns the dot product of this and other
      * 
      * @param other
      * @return dot rpoduct
@@ -63,7 +78,7 @@ public class Vector3 {
     }
 
     /**
-     * Returns a new vector of the cross product of this and another vector
+     * Returns the cross product of this and other as a new vector
      * 
      * @param other
      * @return cross product
@@ -73,19 +88,23 @@ public class Vector3 {
     }
 
     /**
-     * Returns a new vector of this vector after applying a transformation matrix
+     * Transforms this vector by a transformation matrix
      * 
      * @param matrix
-     * @return translated vector
+     * @return this
      */
-    public Vector3 applyMatrix(Matrix4 matrix) {
-        double W = x * matrix.a.d + y * matrix.b.d + z * matrix.c.d + matrix.d.d;
+    public Vector3 transform(Matrix4 matrix) {
+        double w = x * matrix.a.d + y * matrix.b.d + z * matrix.c.d + matrix.d.d;
 
-        double X = (x * matrix.a.a + y * matrix.b.a + z * matrix.c.a + matrix.d.a) / (W != 0 ? W : 1);
-        double Y = (x * matrix.a.b + y * matrix.b.b + z * matrix.c.b + matrix.d.b) / (W != 0 ? W : 1);
-        double Z = (x * matrix.a.c + y * matrix.b.c + z * matrix.c.c + matrix.d.c) / (W != 0 ? W : 1);
+        double X = (x * matrix.a.a + y * matrix.b.a + z * matrix.c.a + matrix.d.a) / (w != 0 ? w : 1);
+        double Y = (x * matrix.a.b + y * matrix.b.b + z * matrix.c.b + matrix.d.b) / (w != 0 ? w : 1);
+        double Z = (x * matrix.a.c + y * matrix.b.c + z * matrix.c.c + matrix.d.c) / (w != 0 ? w : 1);
 
-        return new Vector3(X, Y, Z);
+        x = X;
+        y = Y;
+        z = Z;
+
+        return this;
     }
 
     public String toString() {
