@@ -134,6 +134,21 @@ public class Vector3 {
         return this;
     }
 
+    public Vector3 meanVector(Vector3... points) {
+        double X = 0, Y = 0, Z = 0;
+        for (Vector3 vector3 : points) {
+            X += vector3.x;
+            Y += vector3.y;
+            Z += vector3.z;
+        }
+
+        X /= points.length;
+        Y /= points.length;
+        Z /= points.length;
+        
+        return new Vector3(X, Y, Z);
+    }
+
     public String toString() {
         return String.format("(%.3f, %.3f, %.3f)", x, y, z);
     }

@@ -31,6 +31,7 @@ public class Scene {
 		Mesh sceneMesh = new Mesh(triangles);
 		sceneMesh.orderByDistanceFrom(engine.camera().transform());
 
+		// TODO move projection settings to engine
 		Matrix4 projectionMatrix = Matrix4.PROJECTION_MATRIX(engine.windowSize(), new Angle(90, false), 1000., .1);
 
 		sceneMesh.paint(g, engine, projectionMatrix);
