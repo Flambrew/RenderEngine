@@ -1,4 +1,4 @@
-package src.rendering;
+package src.engine;
 
 import src.data.Vector3;
 

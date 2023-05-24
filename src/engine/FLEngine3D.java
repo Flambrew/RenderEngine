@@ -1,4 +1,4 @@
-package src;
+package src.engine;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import src.data.Vector3;
-import src.rendering.Camera;
-import src.rendering.Scene;
 
 public abstract class FLEngine3D extends JPanel {
     private JFrame window;

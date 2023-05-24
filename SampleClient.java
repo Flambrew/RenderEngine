@@ -1,10 +1,10 @@
 import java.awt.Dimension;
 
-import src.FLEngine3D;
 import src.data.Matrix4;
 import src.data.Vector3;
-import src.rendering.Mesh;
-import src.rendering.Scene;
+import src.engine.FLEngine3D;
+import src.engine.Mesh;
+import src.engine.Scene;
 
 public class SampleClient extends FLEngine3D {
     Scene scene;

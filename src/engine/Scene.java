@@ -1,11 +1,11 @@
-package src.rendering;
+package src.engine;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import src.FLEngine3D;
 import src.data.Angle;
 import src.data.Matrix4;
+import src.rendering.Triangle;
 
 public class Scene {
 	private ArrayList<Mesh> meshes;

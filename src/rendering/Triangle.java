@@ -3,9 +3,9 @@ package src.rendering;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import src.FLEngine3D;
 import src.data.Matrix4;
 import src.data.Vector3;
+import src.engine.FLEngine3D;
 
 public class Triangle {
 	public Vector3 a, b, c;

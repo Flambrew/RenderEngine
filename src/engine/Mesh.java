@@ -1,13 +1,13 @@
-package src.rendering;
+package src.engine;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import src.FLEngine3D;
 import src.data.Matrix4;
 import src.data.Vector3;
+import src.rendering.Triangle;
 
 public class Mesh {
 	private ArrayList<Triangle> triangles;
