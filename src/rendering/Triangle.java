@@ -19,41 +19,51 @@ public class Triangle {
 	}
 
 	public Vector3[] asArray() {
-		return new Vector3[] {a, b, c};
+		return new Vector3[] { a, b, c };
 	}
 
-	public void paint(Graphics g, FLEngine3D engine , Matrix4 projectionMatrix) {
-		Vector3 camPos = engine.camera().transform();
+	public void paint(Graphics g, FLEngine3D engine, Matrix4 projectionMatrix) {
+		// Vector3 camPos = engine.camera().transform().clone().scale(-1);
+		Vector3 camPos = new Vector3(0, 0, -3).scale(-1);
 
-		Triangle translation = new Triangle(
-			a.sum(camPos.scale(-1)),
-			b.sum(camPos.scale(-1)),
-			c.sum(camPos.scale(-1))
+		Triangle translation = new Triangle( //
+				a.clone().sum(camPos), //
+				b.clone().sum(camPos), //
+				c.clone().sum(camPos) //
 		);
 
-		Vector3 line1 = new Vector3(translation.b.x - translation.a.x, translation.b.y - translation.a.y, translation.b.z - translation.a.z);
-		Vector3 line2 = new Vector3(translation.c.x - translation.a.x, translation.c.y - translation.a.y, translation.c.z - translation.a.z);
+		Vector3 line1 = translation.b.clone().sum(translation.a.clone().scale(-1));
+		Vector3 line2 = translation.c.clone().sum(translation.a.clone().scale(-1));
 		Vector3 normal = line1.crossProduct(line2).normalize();
 
 		if (normal.dotProduct(translation.a) < 0) {
-			Triangle projection = new Triangle(
-					translation.a.transform(projectionMatrix),
-					translation.b.transform(projectionMatrix),
-					translation.c.transform(projectionMatrix));
-					
-			int[] xCoordinates = new int[] {
-					(int) ((projection.a.x + 1) * engine.windowSize().width / 2),
-					(int) ((projection.b.x + 1) * engine.windowSize().width / 2),
-					(int) ((projection.c.x + 1) * engine.windowSize().width / 2) };
-			int[] yCoordinates = new int[] {
-					(int) ((projection.a.y + 1) * engine.windowSize().height / 2),
-					(int) ((projection.b.y + 1) * engine.windowSize().height / 2),
-					(int) ((projection.c.y + 1) * engine.windowSize().height / 2) };
+			Triangle projection = new Triangle( //
+					translation.a.clone().transform(projectionMatrix), //
+					translation.b.clone().transform(projectionMatrix), //
+					translation.c.clone().transform(projectionMatrix) //
+			);
 
-			Vector3 color = new Vector3(this.color.getRed(), this.color.getGreen(), this.color.getBlue());
-			color = color.scale(engine.camera().lightsource().normalize().dotProduct(normal) / 2.22 + 0.54954);
-			
-			g.setColor(new Color((int)color.x, (int)color.y, (int)color.z));
+			int[] xCoordinates = new int[] { //
+					(int) ((projection.a.x() + 1) * engine.windowSize().width / 2), //
+					(int) ((projection.b.x() + 1) * engine.windowSize().width / 2), //
+					(int) ((projection.c.x() + 1) * engine.windowSize().width / 2) //
+			};
+
+			int[] yCoordinates = new int[] { //
+					(int) ((projection.a.y() + 1) * engine.windowSize().height / 2), //
+					(int) ((projection.b.y() + 1) * engine.windowSize().height / 2), //
+					(int) ((projection.c.y() + 1) * engine.windowSize().height / 2) //
+			};
+
+			/*
+			 * old shading code Vector3 color = new Vector3(this.color.getRed(),
+			 * this.color.getGreen(), this.color.getBlue()); color =
+			 * color.scale(engine.camera().lightsource().normalize().dotProduct(normal) /
+			 * 2.22 + 0.54954); g.setColor(new Color((int)color.x, (int)color.y,
+			 * (int)color.z));
+			 */
+
+			g.setColor(color);
 			g.fillPolygon(xCoordinates, yCoordinates, 3);
 			g.setColor(Color.BLACK);
 			g.drawPolygon(xCoordinates, yCoordinates, 3);
