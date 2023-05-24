@@ -27,11 +27,7 @@ public class Mesh {
 	public void orderByDistanceFrom(Vector3 point) {
 		triangles.sort(new Comparator<Triangle>() {
 			public int compare(Triangle a, Triangle b) {
-				Vector3 A = new Vector3((a.a.x + a.b.x + a.c.x) / 3, (a.a.y + a.b.y + a.c.y) / 3, (a.a.z + a.b.z + a.c.z) / 3);
-				Vector3 B = new Vector3((b.a.x + b.b.x + b.c.x) / 3, (b.a.y + b.b.y + b.c.y) / 3, (b.a.z + b.b.z + b.c.z) / 3);
-				double distToA = Math.sqrt(Math.pow(A.x - point.x, 2) + Math.pow(A.y - point.y, 2) + Math.pow(A.z - point.z, 2));
-				double distToB = Math.sqrt(Math.pow(B.x - point.x, 2) + Math.pow(B.y - point.y, 2) + Math.pow(B.z - point.z, 2));
-				return distToA < distToB ? 1 : -1;
+				return Vector3.distanceBetween(point, Vector3.meanVector(a.asArray())) < Vector3.distanceBetween(point, Vector3.meanVector(b.asArray())) ? 1 : -1;
 			}
 		});
 	}

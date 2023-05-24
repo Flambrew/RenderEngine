@@ -18,6 +18,10 @@ public class Triangle {
 		this.color = Color.WHITE;
 	}
 
+	public Vector3[] asArray() {
+		return new Vector3[] {a, b, c};
+	}
+
 	public void paint(Graphics g, FLEngine3D engine , Matrix4 projectionMatrix) {
 		Vector3 camPos = engine.camera().transform();
 
