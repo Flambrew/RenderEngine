@@ -23,8 +23,7 @@ public class Triangle {
 	}
 
 	public void paint(Graphics g, FLEngine3D engine, Matrix4 projectionMatrix) {
-		// Vector3 camPos = engine.camera().transform().clone().scale(-1);
-		Vector3 camPos = new Vector3(0, 0, -3).scale(-1);
+		Vector3 camPos = engine.camera().transform().clone().scale(-1);
 
 		Triangle translation = new Triangle( //
 				a.clone().sum(camPos), //
@@ -32,6 +31,7 @@ public class Triangle {
 				c.clone().sum(camPos) //
 		);
 
+		Vector3 negatedA = translation.a.clone().scale(-1);
 		Vector3 line1 = translation.b.clone().sum(translation.a.clone().scale(-1));
 		Vector3 line2 = translation.c.clone().sum(translation.a.clone().scale(-1));
 		Vector3 normal = line1.crossProduct(line2).normalize();
