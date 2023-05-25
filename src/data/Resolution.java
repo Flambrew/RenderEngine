@@ -2,8 +2,12 @@ package src.data;
 
 import java.awt.Dimension;
 
+/** Defines viewport and texture resolution enums
+ * @since 24 May 2023
+ * @author Andrew Matherne (Flambrew) */
 public class Resolution {
-	public enum Screen {
+	/** Viewport resolution enum */
+	public enum Viewport {
 		nHD360(new Dimension(640, 360)),
 		SVGA600(new Dimension(800, 600)),
 		XGA768(new Dimension(1024, 768)),
@@ -26,7 +30,7 @@ public class Resolution {
 
 		private Dimension resolution;
 
-		private Screen(Dimension resolution) {
+		private Viewport(Dimension resolution) {
 			this.resolution = resolution;
 		}
 
@@ -39,6 +43,7 @@ public class Resolution {
 		}
 	}	
 
+	/** Texture resolution enum */
 	public enum Texture {
 		_256(256),
 		_512(512),

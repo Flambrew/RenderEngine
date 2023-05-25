@@ -1,11 +1,8 @@
 package src.data;
 
-/**
- * Represents a point or vector in 3D space
- * 
+/** Represents a point or vector in 3D space
  * @since 26 Apr 2023
- * @author Andrew Matherne (Flambrew) 
- */
+ * @author Andrew Matherne (Flambrew) */
 public class Vector3 {
     private double x, y, z;
 
@@ -23,48 +20,33 @@ public class Vector3 {
         this.z = z;
     }
 
-    /**
-     * Getter for x
-     * 
-     * @return x
-     */
+    /** Getter for x
+     * @return x */
     public double x() {
         return x;
     }
 
-    /**
-     * Getter for y
-     * 
-     * @return y
-     */
+    /** Getter for y
+     * @return y */
     public double y() {
         return y;
     }
 
-    /**
-     * Getter for z
-     * 
-     * @return z
-     */
+    /** Getter for z
+     * @return z */
     public double z() {
         return z;
     }
 
-    /**
-     * Returns a clone of this vector
-     * 
-     * @return clone
-     */
+    /** Returns a clone of this vector
+     * @return clone */
     public Vector3 clone() {
         return new Vector3(x, y, z);
     }
 
-    /**
-     * Adds other to this
-     * 
+    /** Adds other to this
      * @param other
-     * @return this
-     */
+     * @return this */
     public Vector3 sum(Vector3 other) {
         x += other.x;
         y += other.y;
@@ -72,12 +54,9 @@ public class Vector3 {
         return this;
     }
 
-    /**
-     * Scales this vector by n
-     * 
+    /** Scales this vector by n
      * @param n
-     * @return this
-     */
+     * @return this */
     public Vector3 scale(double n) {
         x *= n;
         y *= n;
@@ -85,41 +64,29 @@ public class Vector3 {
         return this;
     }
 
-    /**
-     * Normalizes this vector
-     * 
-     * @return this
-     */
+    /** Normalizes this vector
+     * @return this */
     public Vector3 normalize() {
         return scale(1 / Math.sqrt(x * x + y * y + z * z));
     }
 
-    /**
-     * Returns the dot product of this and other
-     * 
+    /** Returns the dot product of this and other
      * @param other
-     * @return dot rpoduct
-     */
+     * @return dot product */
     public double dotProduct(Vector3 other) {
         return x * other.x + y * other.y + z * other.z;  
     }
 
-    /**
-     * Returns the cross product of this and other as a new vector
-     * 
+    /** Returns the cross product of this and other as a new vector
      * @param other
-     * @return cross product
-     */
+     * @return cross product */
     public Vector3 crossProduct(Vector3 other) {
         return new Vector3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x);
     }
 
-    /**
-     * Transforms this vector by a transformation matrix
-     * 
+    /** Transforms this vector by a transformation matrix
      * @param matrix
-     * @return this
-     */
+     * @return this */
     public Vector3 transform(Matrix4 matrix) {
         double w = x * matrix.a.d + y * matrix.b.d + z * matrix.c.d + matrix.d.d;
 
@@ -134,12 +101,9 @@ public class Vector3 {
         return this;
     }
 
-    /**
-     * Returns the centroid of a set of points
-     * 
+    /** Returns the centroid of a set of points
      * @param points
-     * @return centroid
-     */
+     * @return centroid */
     public static Vector3 centroid(Vector3... points) {
         double X = 0, Y = 0, Z = 0;
         for (Vector3 vector3 : points) {
@@ -151,17 +115,14 @@ public class Vector3 {
         X /= points.length;
         Y /= points.length;
         Z /= points.length;
-        
+
         return new Vector3(X, Y, Z); 
     }
 
-    /**
-     * Returns the distance between two vectors
-     * 
+    /** Returns the distance between two vectors
      * @param a
      * @param b
-     * @return distance
-     */
+     * @return distance */
     public static double distanceBetween(Vector3 a, Vector3 b) {
         return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2) + Math.pow(a.z - b.z, 2));
     }
