@@ -32,15 +32,15 @@ public class Triangle {
 		);
 
 		Vector3 negatedA = translation.a.clone().scale(-1);
-		Vector3 line1 = translation.b.clone().sum(translation.a.clone().scale(-1));
-		Vector3 line2 = translation.c.clone().sum(translation.a.clone().scale(-1));
+		Vector3 line1 = translation.b.clone().sum(negatedA);
+		Vector3 line2 = translation.c.clone().sum(negatedA);
 		Vector3 normal = line1.crossProduct(line2).normalize();
 
 		if (normal.dotProduct(translation.a) < 0) {
 			Triangle projection = new Triangle( //
-					translation.a.clone().transform(projectionMatrix), //
-					translation.b.clone().transform(projectionMatrix), //
-					translation.c.clone().transform(projectionMatrix) //
+					translation.a.transform(projectionMatrix), //
+					translation.b.transform(projectionMatrix), //
+					translation.c.transform(projectionMatrix) //
 			);
 
 			int[] xCoordinates = new int[] { //
