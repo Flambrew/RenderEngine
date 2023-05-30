@@ -2,6 +2,7 @@ package src.rendering;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Vector;
 
 import src.data.Matrix4;
 import src.data.Vector3;
@@ -24,11 +25,12 @@ public class Triangle {
 
 	public void paint(Graphics g, FLEngine3D engine, Matrix4 projectionMatrix) {
 		Vector3 camPos = engine.camera().transform().clone().scale(-1);
+		Vector3 yFlip = new Vector3(-1, 1, -1);
 
 		Triangle translation = new Triangle( //
-				a.clone().sum(camPos), //
-				b.clone().sum(camPos), //
-				c.clone().sum(camPos) //
+				a.clone().sum(camPos).scale(yFlip), //
+				b.clone().sum(camPos).scale(yFlip), //
+				c.clone().sum(camPos).scale(yFlip) //
 		);
 
 		Vector3 negatedA = translation.a.clone().scale(-1);
@@ -58,7 +60,7 @@ public class Triangle {
 			// old shading code:
 			Vector3 color = new Vector3(this.color.getRed(),
 			this.color.getGreen(), this.color.getBlue()); 
-			color = color.scale(new Vector3(0, -1, 0).dotProduct(normal) / 2.22 + 0.54954); 
+			color = color.scale(new Vector3(0, 1, 0).dotProduct(normal) / 2.22 + 0.54954); 
 			g.setColor(new Color((int)color.x(), (int)color.y(), (int)color.z()));
 			g.fillPolygon(xCoordinates, yCoordinates, 3);
 			g.setColor(Color.BLACK);
