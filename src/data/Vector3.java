@@ -64,16 +64,6 @@ public class Vector3 {
         return this;
     }
 
-    /** Scales each value in this vector by its corresponding value in the other vector
-     * @param n
-     * @return this */
-    public Vector3 scale(Vector3 vec) {
-        x *= vec.x;
-        y *= vec.y;
-        z *= vec.z;
-        return this;
-    }
-
     /** Normalizes this vector
      * @return this */
     public Vector3 normalize() {

@@ -23,7 +23,7 @@ public class Triangle {
 	}
 
 	public void paint(Graphics g, FLEngine3D engine, Matrix4 projectionMatrix) {
-		Vector3 camPos = engine.camera().transform().clone().scale(new Vector3(-1, 1, -1));
+		Vector3 camPos = engine.camera().transform().clone().scale(-1);
 
 		Triangle translation = new Triangle( //
 				a.clone().sum(camPos), //
@@ -50,9 +50,9 @@ public class Triangle {
 			};
 
 			int[] yCoordinates = new int[] { //
-					(int) ((projection.a.y() + 1) * engine.windowSize().height / 2), //
-					(int) ((projection.b.y() + 1) * engine.windowSize().height / 2), //
-					(int) ((projection.c.y() + 1) * engine.windowSize().height / 2) //
+					engine.windowSize().height - (int) ((projection.a.y() + 1) * engine.windowSize().height / 2), //
+					engine.windowSize().height - (int) ((projection.b.y() + 1) * engine.windowSize().height / 2), //
+					engine.windowSize().height - (int) ((projection.c.y() + 1) * engine.windowSize().height / 2) //
 			};
 
 			/*
