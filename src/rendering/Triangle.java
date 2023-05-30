@@ -50,22 +50,16 @@ public class Triangle {
 			};
 
 			int[] yCoordinates = new int[] { //
-					engine.windowSize().height - (int) ((projection.a.y() + 1) * engine.windowSize().height / 2), //
-					engine.windowSize().height - (int) ((projection.b.y() + 1) * engine.windowSize().height / 2), //
-					engine.windowSize().height - (int) ((projection.c.y() + 1) * engine.windowSize().height / 2) //
+					(int) ((projection.a.y() + 1) * engine.windowSize().height / 2), //
+					(int) ((projection.b.y() + 1) * engine.windowSize().height / 2), //
+					(int) ((projection.c.y() + 1) * engine.windowSize().height / 2) //
 			};
 
-			/*
-			 * old shading code:
-			 * 
-			 * Vector3 color = new Vector3(this.color.getRed(),
-			 * this.color.getGreen(), this.color.getBlue()); color =
-			 * color.scale(engine.camera().lightsource().normalize().dotProduct(normal) /
-			 * 2.22 + 0.54954); g.setColor(new Color((int)color.x, (int)color.y,
-			 * (int)color.z));
-			 */
-
-			g.setColor(color);
+			// old shading code:
+			Vector3 color = new Vector3(this.color.getRed(),
+			this.color.getGreen(), this.color.getBlue()); 
+			color = color.scale(new Vector3(0, -1, 0).dotProduct(normal) / 2.22 + 0.54954); 
+			g.setColor(new Color((int)color.x(), (int)color.y(), (int)color.z()));
 			g.fillPolygon(xCoordinates, yCoordinates, 3);
 			g.setColor(Color.BLACK);
 			g.drawPolygon(xCoordinates, yCoordinates, 3);
